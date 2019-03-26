@@ -1,6 +1,8 @@
 // 1 - variables
 const boton = $('#boton');
 const contenido = $('#contenido');
+const numero = $('#numero');
+const boton2 = $('#boton2');
 
 // 2 - funciones
 
@@ -33,7 +35,7 @@ const llamarAPI = (e) => {
             let miContenido2 =
                 /* html */
                 `<img class="rounded-circle" src="${data.results[0].picture.large}">
-                <p>
+                <p class="text-light">
                 ${data.results[0].name.title}.
                 ${data.results[0].name.first}
                 ${data.results[0].name.last}
@@ -46,7 +48,10 @@ const llamarAPI = (e) => {
                     .html(miContenido)
                     .fadeIn("slow");
             });
-            $('#contenido2').html(miContenido2);
+
+            $('#contenido2').fadeOut("slow", function () {
+                $('#contenido2').html(miContenido2).fadeIn("slow");
+            });
 
         },
         error: function () {
