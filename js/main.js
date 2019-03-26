@@ -8,7 +8,7 @@ const contenido = $('#contenido');
 const llamarAPI = (e) => {
     e.preventDefault();
     $.ajax({
-        url: 'https://randomuser.me/api/?nat=gb',
+        url: 'https://randomuser.me/api/?nat=es&inc=gender,name,nat,picture&results=5',
         dataType: 'json',
         success: function (data) {
             console.log(data);
@@ -46,6 +46,7 @@ const llamarAPI = (e) => {
                     .html(miContenido)
                     .fadeIn("slow");
             });
+            $('#contenido2').html(miContenido2);
 
         },
         error: function () {

@@ -1,3 +1,8 @@
 .miTarjeta {
     display: none;
 }
+
+.contenido2 {
+    height: 240px;
+    width: 100%;
+}
