@@ -7,10 +7,10 @@ const boton2 = $('#boton2');
 // 2 - funciones
 
 // https://randomuser.me/
-const llamarAPI = (e) => {
-    e.preventDefault();
+const llamarAPI = (miUrl) => {
+    // e.preventDefault();
     $.ajax({
-        url: 'https://randomuser.me/api/?nat=es&inc=gender,name,nat,picture&results=5',
+        url: miUrl,
         dataType: 'json',
         success: function (data) {
             console.log(data);
@@ -32,15 +32,21 @@ const llamarAPI = (e) => {
                 </div>
             `;
 
-            let miContenido2 =
-                /* html */
-                `<img class="rounded-circle" src="${data.results[0].picture.large}">
-                <p class="text-light">
-                ${data.results[0].name.title}.
-                ${data.results[0].name.first}
-                ${data.results[0].name.last}
+            // ahora iteramos sobre el array de resultados, el nº de elementos es dinámico y depende del valor del input
+            let miContenido2 = '';
+            for (let i = 0; i < data.results.length; i++) {
+                miContenido2 +=
+                    /* html */
+                    `<img class="rounded-circle" src="${data.results[i].picture.large}">
+                <p class="mt-2">
+                ${data.results[i].name.title}.
+                ${data.results[i].name.first}
+                ${data.results[i].name.last}
                 </p>
             `;
+            }
+
+
 
             // insertamos el contenido de la variable dentro del div
             contenido.fadeOut("slow", function () {
@@ -60,6 +66,25 @@ const llamarAPI = (e) => {
     });
 };
 
+const prepararUrl = (e) => {
+    e.preventDefault();
+    let miUrl;
+    // como los dos botones apuntan a esta funcion, hay que saber cuál es el que ha pulsado
+    // atributo TARGET dentro del DOM
+    if (e.target.id === 'boton') {
+        miUrl = 'https://randomuser.me/api/?nat=es&inc=gender,name,nat,picture';
+    }
+
+    if (e.target.id === 'boton2') {
+        // esta variable la cogemos del texto del input que indica el nº de usuarios
+        let n = numero.val();
+        // la pasamos por la url, para indicar el nº de resultados
+        miUrl = 'https://randomuser.me/api/?nat=es&inc=gender,name,nat,picture&results=' + n;
+    }
+    llamarAPI(miUrl);
+
+}
+
 
 // 3 - eventos
 
@@ -71,4 +96,5 @@ $('#boton').click(function (e) {
 */
 
 // equivalente a lo de arriba
-boton.on('click', llamarAPI);
+boton.on('click', prepararUrl);
+boton2.on('click', prepararUrl);
