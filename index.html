@@ -13,28 +13,27 @@
 <body>
     <div class="container mt-5">
         <div class="row justify-content-center">
-            <h1 class="text-warning">RANDOM USER GENERATOR</h1>
+            <h1 class="text-primary">RANDOM USER GENERATOR</h1>
+        </div>
+        <div class="row justify-content-center mt-3">
+            <button class="btn btn-outline-primary" id="boton">
+                Llamar API
+            </button>
         </div>
         <div class="row justify-content-center mt-5">
-            <div class="col-4">
-                <input type="number" id="numero" class="form-control" placeholder="Número de usuarios">
-            </div>
-            <div class="col-4">
-                <button class="btn btn-outline-primary form-control" id="boton">
-                    Llamar API
+            <div class="col-5">
+                <input type="number" id="numero" class="form-control" placeholder="Indica el número de usuarios">
+                <button class="btn btn-outline-primary form-control" id="boton2">
+                    Llamar API varios usuarios
                 </button>
             </div>
-            <div class="col-2">
-                <input type="text" class="form-control" id="numeroUsuarios" readonly>
-            </div>
-        </div>
-        <div class="row mt-4">
-            <input type="text" class="form-control" id="busqueda"
-                placeholder="Indica el patrón de búsqueda para filtrar los usuarios">
         </div>
         <div class="row justify-content-center mt-5">
-            <div id="contenido" class="">
-
+            <div id="contenido" class="card text-white bg-primary miTarjeta" style="width: 12rem;">
+            </div>
+        </div>
+        <div class="row justify-content-center mt-5 text-center mb-5">
+            <div id="contenido2" class="bg-light text-dark contenido2 p-5 border border-primary">
             </div>
         </div>
     </div>
