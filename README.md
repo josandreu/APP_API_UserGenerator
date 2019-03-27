@@ -1,5 +1,5 @@
 # APP_API_UserGenerator
 
-### APP de consultas con jQuery a la API randomuser.me
+### Llamamos a la API y filtramos los resultados a través de un formulario
 
 [randomuser.me](https://randomuser.me)
